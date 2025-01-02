@@ -155,13 +155,3 @@ location /auth {
    proxy_pass $forward_scheme://kong:8000;
 }
 ```
-
-## Basic Authentication
-
-1. Create new Access List in proxy manager
-2. Enable "Satisfy Any"
-3. Configure username/password in Authorization Tab
-4. Apply Access List to your studio proxy host
-5. Save configuration
-
-Your Supabase Studio will now be protected with basic authentication at studio.yourdomain.com.
