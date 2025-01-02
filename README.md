@@ -23,23 +23,10 @@ Search for the `kong:` section in `docker-compose.yml` and remove the `ports:` s
 ### Configure Supabase Studio (Dashboard)
 Go to `docker/volumes/api/kong.yml` and remove the entire "Protected Dashboard" section that contains `- dashboard`.
 
-## Adding Authentication Services
-
-### Add nginx and authelia
+### Add nginx
 Add these services to your `docker-compose.yml` under the `services:` section:
 
 ```yaml
-authelia:
-  container_name: authelia
-  image: authelia/authelia
-  restart: unless-stopped
-  expose:
-    - 9091
-  volumes:
-    - ./authelia/config:/config
-  environment:
-    TZ: 'Europe/Berlin'
-
 nginx:
   image: 'jc21/nginx-proxy-manager:latest'
   restart: unless-stopped
@@ -55,8 +42,6 @@ nginx:
   environment:
     TZ: 'Europe/Berlin'
 ```
-
-Note: If you're satisfied with protecting Supabase Dashboard using HTTPS + Basic Auth, you can skip adding authelia and its setup.
 
 ## S3 Configuration
 
